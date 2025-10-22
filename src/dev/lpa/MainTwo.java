@@ -12,5 +12,13 @@ public class MainTwo {
                 .toList();
 
         System.out.println(squaredNumbers);
+
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Eva");
+        names.stream()
+                .mapToInt(String::length)
+                .max()
+                .ifPresent(System.out::println);
+
+
     }
 }
