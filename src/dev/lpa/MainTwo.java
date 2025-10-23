@@ -19,6 +19,19 @@ public class MainTwo {
                 .max()
                 .ifPresent(System.out::println);
 
+        List<String> sentences = Arrays.asList(
+                "Java Stream API provides a fluent interface for processing sequences of elements.",
+                "It supports functional-style operations on streams of elements, such as map-reduce transformations.",
+                "In this exercise, you need to count the total number of words in all sentences."
+        );
 
+        //String joinedSentences = String.join("", sentences);
+        long distinctWordCount = sentences.stream()
+                .flatMap(sentence -> Arrays.stream(sentence.split("\\W+")))
+                .map(String::toLowerCase)
+                .distinct()
+                .count();
+
+        System.out.println(distinctWordCount);
     }
 }
