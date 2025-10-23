@@ -2,6 +2,7 @@ package dev.lpa;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainTwo {
     public static void main(String[] args) {
@@ -33,5 +34,23 @@ public class MainTwo {
                 .count();
 
         System.out.println(distinctWordCount);
+
+        List<String> words = Arrays.asList("apple", "banana", "cherry", "date", "elderberry");
+        String firstTwoEvenLengthWords = words.stream()
+                .filter(word -> word.length() % 2 == 0)
+                .limit(2)
+                .collect(Collectors.joining());
+
+        System.out.println(firstTwoEvenLengthWords);
+
+        List<Integer> numbersTwo = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        int sum = numbersTwo.stream()
+                .filter(number -> number % 2 == 0)
+                .map(number -> number * number)
+                .reduce(0, Integer::sum);
+
+        System.out.println(sum);
+
     }
 }
